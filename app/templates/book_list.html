@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+
+        {% block header %}
+            <header id="cm-header">
+            <nav class="cm-navbar cm-navbar-midnight">
+                <div class="btn btn-midnight md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+                <div class="cm-flex">
+                    {% block title %}
+                    <h1>Home</h1>
+                        {% endblock %}
+                    <form id="cm-search" action="index.html" method="get">
+                        <input type="search" name="q" autocomplete="off" placeholder="Search...">
+                    </form>
+                </div>
+                <div class="pull-right">
+                    <div id="cm-search-btn" class="btn btn-midnight md-search-white" data-toggle="cm-search"></div>
+                </div>
+
+                <div class="dropdown pull-right">
+                    <button class="btn btn-midnight md-account-circle-white" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+
+                        {% if current_user.is_authenticated %}
+                        <li class="disabled text-center">
+                            <a style="cursor:default;"><strong>{{ current_user.name }}</strong></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('auth.logout') }}"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                        </li>
+                        {% else %}
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ url_for('auth.register') }}"><i class="fa fa-fw fa-download"></i> Register</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('auth.login') }}"><i class="fa fa-fw fa-sign-out"></i> Sign in</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+            <nav class="cm-navbar cm-navbar-default cm-navbar-slideup">
+    <div class="cm-flex">
+        <div class="nav-tabs-container">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="{{ url_for('book_operate.book_list') }}">图书列表</a></li>
+                <li><a href="{{ url_for('book_operate.book_add') }}">添加图书</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+        </header>
+        {% endblock %}
+    {% block navbar %}
+class="cm-no-transition cm-2-navbar"
+{% endblock %}
+
+
+
+
+{% block global %}
+        <div id="global">
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">当前用户所管理的所有桌面</div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover">
+
+                                    <thead>
+                                        <tr>
+                                            <th>图书序号</th>
+                                            <th>创建时间</th>
+                                            <th>更新时间</th>
+                                            <th>图书书名</th>
+                                            <th>图书ISBN</th>
+                                            <th>图书作者</th>
+                                            <th>图书出版社</th>
+                                            <th>图书出版时间</th>
+                                            <th>图书封面外链</th>
+                                            <th>操作桌面</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for book in books %}
+                                        <tr>
+                                            <th scope="row">{{ loop.index }}</th>
+                                            <td>{{ book.create_time|string|truncate(19, True, '') }}</td>
+                                            <td>{{ book.update_time|string|truncate(19, True, '') }}</td>
+                                            <td>{{ book.book_title }}</td>
+                                            <td>{{ book.book_isbn }}</td>
+                                            <td>{{ book.book_author }}</td>
+                                            <td>{{ book.book_publisher }}</td>
+                                            <td>{{ book.book_year_of_publication }}</td>
+                                            <td><img src="{{ book.book_image_url_s }}"></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">管理 <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="{{ url_for('book_operate.book_change', book_id=book.id) }}">修改桌面</a></li>
+                                                    <li><a href="{{ url_for('book_operate.book_delete', book_id=book.id) }}">删除桌面</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+             <footer class="cm-footer"><span class="pull-left">Powered By MagicShell</span><span class="pull-right">Copyright &copy; HUANGZP 2018</span></footer>
+        </div>
+{% endblock %}
+

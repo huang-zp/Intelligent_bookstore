@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+
+        {% block header %}
+            <header id="cm-header">
+            <nav class="cm-navbar cm-navbar-midnight">
+                <div class="btn btn-midnight md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+                <div class="cm-flex">
+                    {% block title %}
+                    <h1>Home</h1>
+                        {% endblock %}
+                    <form id="cm-search" action="index.html" method="get">
+                        <input type="search" name="q" autocomplete="off" placeholder="Search...">
+                    </form>
+                </div>
+                <div class="pull-right">
+                    <div id="cm-search-btn" class="btn btn-midnight md-search-white" data-toggle="cm-search"></div>
+                </div>
+
+                <div class="dropdown pull-right">
+                    <button class="btn btn-midnight md-account-circle-white" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+
+                        {% if current_user.is_authenticated %}
+                        <li class="disabled text-center">
+                            <a style="cursor:default;"><strong>{{ current_user.name }}</strong></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('auth.logout') }}"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                        </li>
+                        {% else %}
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ url_for('auth.register') }}"><i class="fa fa-fw fa-download"></i> Register</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('auth.login') }}"><i class="fa fa-fw fa-sign-out"></i> Sign in</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+            <nav class="cm-navbar cm-navbar-default cm-navbar-slideup">
+    <div class="cm-flex">
+        <div class="nav-tabs-container">
+            <ul class="nav nav-tabs">
+                <li><a href="{{ url_for('user_operate.user_list') }}">用户列表</a></li>
+                <li><a href="{{ url_for('user_operate.user_add') }}">添加用户</a></li>
+                <li class="active"><a href="{{ url_for('user_operate.user_change', user_id=user.id) }}">修改用户</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+        </header>
+        {% endblock %}
+    {% block navbar %}
+class="cm-no-transition cm-2-navbar"
+{% endblock %}
+
+
+
+
+{% block global %}
+        <div id="global">
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">修改用户信息信息</div>
+                            <div class="panel-body">
+
+    <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
+                                             {% for message in get_flashed_messages() %}
+                             <div class="alert alert-warning">
+                             <button type="button" class="close" data-dismiss="alert">&times;</button>
+                             {{ message }}
+                             </div>
+                    {% endfor %}
+     <form method="post" action="{{ url_for('user_operate.user_change', user_id=user.id) }}" >
+	<div class="col-xs-12">
+                  <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-child"></i></div>
+	      <input type="text" name="name" class="form-control" placeholder="用户昵称" value="{{ user.name }}">
+	    </div>
+          </div>
+          <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
+	      <input type="text" name="email" class="form-control" placeholder="用户邮箱" value="{{ user.email }}">
+	    </div>
+          </div>
+          <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
+	      <input type="password" name="password" class="form-control" placeholder="用户密码" value="{{ user.password }}">
+	    </div>
+          </div>
+              <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
+	      <input type="text" name="age" class="form-control" placeholder="用户年龄" value="{{ user.age }}">
+	    </div>
+          </div>
+              <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
+	      <input type="text" name="location" class="form-control" placeholder="地区" value="{{ user.locatiom }}">
+	    </div>
+          </div>
+                  <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-cloud"></i></div>
+	      <input type="text" name="role" class="form-control" placeholder="用户角色" value="{% if user.role_id == 1 %}管理员{% else %}普通用户{% endif %}">
+	    </div>
+          </div>
+
+        </div>
+	<div class="col-xs-6">
+         <a href="{{ url_for('user_operate.user_list') }}"> <button type="button" class="btn btn-block btn-default">放弃</button> </a>
+	</div><div class="col-xs-6">
+          <button type="submit" class="btn btn-block btn-primary">提交</button>
+        </div>
+      </form>
+    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+             <footer class="cm-footer"><span class="pull-left">Powered By MagicShell</span><span class="pull-right">Copyright &copy; HUANGZP 2018</span></footer>
+        </div>
+{% endblock %}
+

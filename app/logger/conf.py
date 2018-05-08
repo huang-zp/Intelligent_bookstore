@@ -37,25 +37,12 @@ LOG_CONFIG = {
             'class': 'logging.StreamHandler',
             'stream': 'ext://sys.stdout',
             'formatter': 'colored'
-        },
-        'douban': {
-            'level': 'INFO',
-            'filters': None,
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'when': 'D',
-            'filename': '{}/logs/douban/douban.log'.format(APP_PATH),
-            'formatter': 'standard'
         }
     },
     'loggers': {
         'task': {
             'handlers': ['task', 'console'],
             'propagate': False
-        },
-        'douban': {
-            'handlers': ['douban', 'console'],
-            'propagate': False
         }
-
     }
 }

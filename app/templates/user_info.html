@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+
+        {% block header %}
+            <header id="cm-header">
+            <nav class="cm-navbar cm-navbar-midnight">
+                <div class="btn btn-midnight md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+                <div class="cm-flex">
+                    {% block title %}
+                    <h1>Home</h1>
+                        {% endblock %}
+                    <form id="cm-search" action="index.html" method="get">
+                        <input type="search" name="q" autocomplete="off" placeholder="Search...">
+                    </form>
+                </div>
+                <div class="pull-right">
+                    <div id="cm-search-btn" class="btn btn-midnight md-search-white" data-toggle="cm-search"></div>
+                </div>
+
+                <div class="dropdown pull-right">
+                    <button class="btn btn-midnight md-account-circle-white" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+
+                        {% if current_user.is_authenticated %}
+                        <li class="disabled text-center">
+                            <a style="cursor:default;"><strong>{{ current_user.name }}</strong></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('auth.logout') }}"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                        </li>
+                        {% else %}
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ url_for('auth.register') }}"><i class="fa fa-fw fa-download"></i> Register</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url_for('auth.login') }}"><i class="fa fa-fw fa-sign-out"></i> Sign in</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+        {% endblock %}
+
+
+
+
+
+{% block global %}
+        <div id="global">
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">个人信息</div>
+                            <div class="panel-body">
+
+    <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
+                                             {% for message in get_flashed_messages() %}
+                             <div class="alert alert-warning">
+                             <button type="button" class="close" data-dismiss="alert">&times;</button>
+                             {{ message }}
+                             </div>
+                    {% endfor %}
+     <form method="post" action="{{ url_for('info.user_info') }}" >
+	<div class="col-xs-12">
+                  <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
+	      <input type="text" name="name" class="form-control" placeholder="昵称" value="{{ current_user.name }}">
+	    </div>
+          </div>
+          <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></div>
+	      <input type="text" name="email" class="form-control" placeholder="邮箱" value="{{ current_user.email }}">
+	    </div>
+          </div>
+
+              <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></div>
+	      <input type="text" name="age" class="form-control" placeholder="年龄" value="{{ current_user.age }}">
+	    </div>
+          </div>
+
+              <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></div>
+	      <input type="text" name="location" class="form-control" placeholder="地区" value="{{ current_user.location }}">
+	    </div>
+          </div>
+
+
+
+          <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon"><i class="fa fa-fw fa-bell"></i></div>
+	      <input type="text" name="role" class="form-control" placeholder="角色" disabled="disabled" value="{% if current_user.role_id == 1 %} 管理员 {% else %} 普通用户 {% endif %}">
+	    </div>
+          </div>
+        </div>
+	<div class="col-xs-6">
+         <a href="{{ url_for('ib.index') }}"> <button type="button" class="btn btn-block btn-default">返回</button> </a>
+	</div><div class="col-xs-6">
+          <button type="submit" class="btn btn-block btn-primary">更改</button>
+        </div>
+      </form>
+    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+             <footer class="cm-footer"><span class="pull-left">Powered By MagicShell</span><span class="pull-right">Copyright &copy; HUANGZP 2018</span></footer>
+        </div>
+{% endblock %}
+

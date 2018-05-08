@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+                    {% block title %}
+                    <h1>日志管理</h1>
+                        {% endblock %}
+
+
+
+
+{% block global %}
+        <div id="global">
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">查看系统日志</div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover">
+
+                                    <thead>
+                                        <tr>
+                                            <th>日志序号</th>
+                                            <th>创建时间</th>
+                                            <th>更新时间</th>
+                                            <th>操作用户</th>
+                                            <th>具体操作</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for log in logs %}
+                                        <tr>
+                                            <th scope="row">{{ loop.index }}</th>
+                                            <td>{{ log.create_time|string|truncate(19, True, '') }}</td>
+                                            <td>{{ log.update_time|string|truncate(19, True, '') }}</td>
+                                            <td>{{ log.user }}</td>
+                                            <td>{{ log.operate }}</td>
+
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+             <footer class="cm-footer"><span class="pull-left">Powered By MagicShell</span><span class="pull-right">Copyright &copy; HUANGZP 2018</span></footer>
+        </div>
+{% endblock %}
+

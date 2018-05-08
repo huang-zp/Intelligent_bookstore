@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+
+                    {% block title %}
+                    <h1>智能书屋后台管理系统</h1>
+                        {% endblock %}
+
+{% block global %}
+<div id="global">
+    <div class="container-fluid cm-container-white">
+        <h2 style="margin-top:0;">欢迎进入智能书屋后台管理系统 !</h2>
+        <p>时代的进步带来的是科学的发展，是电子科技的成长和智能设备的壮大。与此同时，科技智能在日常生活中掀起了一片浪潮，并且逐渐在人们的生活中占据了了不可或缺的地位，成为了日常生活的一部分。在当前这个信息化的时代，电子科技成为了主流，并且成为了人们沟通交流的主要的信息渠道，人们也感受到了来自智能电子科技的便利，庞大人群开始从事和致力于相关产业的发展。因此智能市场具有强大的潜力，将会是以后生活的主导。</p>
+    </div>
+    <div class="container-fluid">
+        <div class="row cm-fix-height">
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="{{ url_for('static', filename='assets/img/ssh.png') }}" alt="Less support" class="img-responsive">
+                        <br>
+                        <p>SSH之所以能够保证安全，原因在于它采用了公钥加密。
+                        整个过程是这样的：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="{{ url_for('static', filename='assets/img/sshdesktop.jpg') }}" alt="Responsive across devices" class="img-responsive">
+                        <br>
+                        <p> 在后台通过底层库paramiko，paramiko遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接。逻辑代码运行命令拿到数据后通过bootstrap静态样式对数据进行可视化展示</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="{{ url_for('static', filename='assets/img/sshsafe.jpg') }}" alt="Components" class="img-responsive">
+                        <br>
+                        <p>  本系统因为设计到服务器的连接与密码保存，所以为了确保隐私安全，用户表的密码和连接的服务器的密码使用MD5不可逆算法加密后存储，为防止彩虹表破解更会先使用一个特定的字符串（如域名）加密，然后再使用一个随机的salt（盐值）加密。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row cm-fix-height">
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="panel panel-default thumbnail cm-thumbnail">
+                    <div class="panel-body text-center">
+                        <span class="svg-48">
+                            <img src="{{ url_for('static', filename='assets/img/sf/house.svg') }}" alt="控制面板">
+                        </span>
+                        <h4>虚拟系统</h4> <small>可视化虚拟桌面系统.</small>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="panel panel-default thumbnail cm-thumbnail">
+                    <div class="panel-body text-center">
+                        <span class="svg-48">
+                            <img src="{{ url_for('static', filename='assets/img/sf/dashboard.svg') }}" alt="notepad">
+                        </span>
+                        <h4>我的桌面</h4> <small>选择虚拟桌面进行连接.</small>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="panel panel-default thumbnail cm-thumbnail">
+                    <div class="panel-body text-center">
+                        <span class="svg-48">
+                            <img src="{{ url_for('static', filename='assets/img/sf/brick.svg') }}" alt="brick">
+                        </span>
+                        <h4>桌面管理</h4> <small>对自己的虚拟桌面进行管理.</small>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="panel panel-default thumbnail cm-thumbnail">
+                    <div class="panel-body text-center">
+                        <span class="svg-48">
+                            <img src="{{ url_for('static', filename='assets/img/sf/window-layout.svg') }}" alt="window-layout">
+                        </span>
+                        <h4>个人中心</h4> <small>用户的个人中心信息.</small>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="panel panel-default thumbnail cm-thumbnail">
+                    <div class="panel-body text-center">
+                        <span class="svg-48">
+                            <img src="{{ url_for('static', filename='assets/img/sf/lock-open.svg') }}" alt="cat">
+                        </span>
+                        <h4>用户管理</h4> <small>管理员对用户的管理.</small>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="panel panel-default thumbnail cm-thumbnail">
+                    <div class="panel-body text-center">
+                        <span class="svg-48">
+                            <img src="{{ url_for('static', filename='assets/img/sf/notepad.svg') }}" alt="lock-open">
+                        </span>
+                        <h4>日志管理</h4> <small>整个系统运行日志.</small>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">选择后台主题</div>
+            <div class="panel-body" id="demo-buttons">
+                <p>点击按钮选择导航栏颜色 :</p>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <button class="btn btn-block btn-primary" data-switch-color="primary">primary</button>
+                        <br>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <button class="btn btn-block btn-success" data-switch-color="success">success</button>
+                        <br>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <button class="btn btn-block btn-warning" data-switch-color="warning">warning</button>
+                        <br>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <button class="btn btn-block btn-gray" data-switch-color="gray">gray</button>
+                        <br>
+                    </div>
+
+
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <button class="btn btn-block btn-turquoise" data-switch-color="turquoise">turquoise</button>
+                        <br>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <button class="btn btn-block btn-midnight" data-switch-color="midnight">midnight</button>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="cm-footer"><span class="pull-left">Connected as John Smith</span><span class="pull-right">&copy; PAOMEDIA SARL</span></footer>
+</div>
+{% endblock %}
+
