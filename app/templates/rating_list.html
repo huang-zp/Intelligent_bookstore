@@ -7,7 +7,7 @@
                 <div class="btn btn-midnight md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
                     {% block title %}
-                    <h1>Home</h1>
+                    <h1>评分管理</h1>
                         {% endblock %}
                     <form id="cm-search" action="index.html" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="Search...">
@@ -73,7 +73,7 @@ class="cm-no-transition cm-2-navbar"
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">管理系统所有用户</div>
+                            <div class="panel-heading">管理系统所有评分</div>
                             <div class="panel-body">
                                 <table class="table table-bordered table-hover">
 
@@ -98,7 +98,7 @@ class="cm-no-transition cm-2-navbar"
                                             <td>{{ rating.book_isbn }}</td>
                                             <td>{{ rating.user_id }}</td>
                                              <td>{{ rating.book_rating }}</td>
-b                                            <td>
+                                            <td>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">管理 <span class="caret"></span></button>
                                                     <ul class="dropdown-menu" role="menu">

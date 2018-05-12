@@ -8,7 +8,7 @@ log_operate = Blueprint('log_operate', __name__, url_prefix='')
 param_location = ('json', )
 
 
-@log_operate.route('/log/list')
+@log_operate.route('/admin/log/list')
 @login_required
 def log_list():
     logs = db.session.query(Log).all()

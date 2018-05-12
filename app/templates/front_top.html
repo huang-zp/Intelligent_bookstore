@@ -1,0 +1,49 @@
+{% extends "front_base.html" %}
+
+                           {% block nav %}
+            <li><a href="{{ url_for('front_index.index') }}">书屋</a></li>
+            <li><a href="{{ url_for('front_index.recomm') }}">推荐</a></li>
+            <li class="selected"><a href="{{ url_for('front_index.top') }}">排行版</a></li>
+            <li><a href="{{ url_for('front_index.myrating') }}">我的评分</a></li>
+                        {% if current_user.is_authenticated %}
+
+            <li><a href="{{ url_for('front_index.info') }}">个人中心</a></li>
+                               {% else %}
+            <li><a href="{{ url_for('front_index.register') }}">注册</a></li>
+            <li><a href="{{ url_for('front_index.login') }}">登录</a></li>
+                               {% endif %}
+                {% endblock %}
+
+                           {% block left %}
+       	<div class="left_content">
+        	<div class="crumb_nav">
+            <a href="index.html">home</a> &gt;&gt; category name
+            </div>
+            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>Category books</div>
+
+           <div class="new_products">
+
+               {% for book in books %}
+                    <div class="new_prod_box">
+                        <a href="details.html">{{ book.book_author }}</a>
+                        <div class="new_prod_bg">
+                        <a href="details.html"><img src="{{ book.book_image_url_m }}" alt="" title="" class="thumb" border="0" /></a>
+                        </div>
+                    </div>
+
+
+            {% endfor %}
+
+
+
+
+
+
+
+
+            </div>
+
+
+        <div class="clear"></div>
+        </div><!--end of left content-->
+                           {% endblock %}

@@ -1,0 +1,59 @@
+{% extends "front_base.html" %}
+
+                           {% block nav %}
+            <li><a href="{{ url_for('front_index.index') }}">书屋</a></li>
+            <li><a href="{{ url_for('front_index.recomm') }}">推荐</a></li>
+            <li><a href="{{ url_for('front_index.top') }}">排行版</a></li>
+            <li class="selected"><a href="{{ url_for('front_index.myrating') }}">我的评分</a></li>
+                        {% if current_user.is_authenticated %}
+
+            <li><a href="{{ url_for('front_index.info') }}">个人中心</a></li>
+                               {% else %}
+            <li><a href="{{ url_for('front_index.register') }}">注册</a></li>
+            <li><a href="{{ url_for('front_index.login') }}">登录</a></li>
+                               {% endif %}
+                {% endblock %}
+
+                           {% block left %}
+       	<div class="left_content">
+            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>信息</div>
+
+        	<div class="feat_prod_box_details">
+            <p class="details">
+
+            </p>
+
+              	<div class="contact_form">
+                <div class="form_subtitle">个人展示信息</div>
+                    <div class="form_row">
+                    <label class="contact"><strong>Name:</strong></label>
+                    <input type="text" class="contact_input" value="{{ user.name }}"/>
+                    </div>
+
+                    <div class="form_row">
+                    <label class="contact"><strong>Email:</strong></label>
+                    <input type="text" class="contact_input" value="{{ user.email }}"/>
+                    </div>
+
+
+                    <div class="form_row">
+                    <label class="contact"><strong>Location:</strong></label>
+                    <input type="text" class="contact_input" value="{{ user.location }}"/>
+                    </div>
+
+
+
+                    <div class="form_row">
+                </div>
+                </div>
+
+          </div>
+
+
+
+
+
+
+        <div class="clear"></div>
+        </div><!--end of left content-->
+                           {% endblock %}

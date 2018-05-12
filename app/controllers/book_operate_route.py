@@ -8,15 +8,15 @@ book_operate = Blueprint('book_operate', __name__, url_prefix='')
 param_location = ('json', )
 
 
-@book_operate.route('/book/list')
+@book_operate.route('/admin/book/list')
 @login_required
 def book_list():
 
-    books = db.session.query(BxBook).all()
+    books = db.session.query(BxBook).order_by(BxBook.id).limit(10).all()
     return render_template('book_list.html', books=books)
 
 
-@book_operate.route('/book/delete/<int:book_id>')
+@book_operate.route('/admin/book/delete/<int:book_id>')
 def book_delete(book_id):
     book = db.session.query(BxBook).filter(BxBook.id == book_id).first()
     db.session.delete(book)
@@ -24,7 +24,7 @@ def book_delete(book_id):
     return redirect(url_for('book_operate.book_list'))
 
 
-@book_operate.route('/book/add', methods=['POST', 'GET'])
+@book_operate.route('/admin/book/add', methods=['POST', 'GET'])
 def book_add():
     if request.method == 'POST':
 
@@ -57,7 +57,7 @@ def book_add():
     return render_template('book_add.html')
 
 
-@book_operate.route('/book/change/<int:book_id>', methods=['POST', 'GET'])
+@book_operate.route('/admin/book/change/<int:book_id>', methods=['POST', 'GET'])
 def book_change(book_id):
     book = db.session.query(BxBook).filter(BxBook.id == book_id).first()
     if request.method == 'POST':

@@ -7,7 +7,7 @@ from logging.handlers import TimedRotatingFileHandler
 from app.models import User, Role
 from app.engines import db
 from flask import Flask, jsonify, request, g, json
-from app.controllers import ib , auth, book_operate, user_operate, log_operate, info, rating_operate
+from app.controllers import ib , auth, book_operate, user_operate, log_operate, info, rating_operate, front_index
 
 from flask_login import LoginManager
 # from app.cache import cache
@@ -42,6 +42,7 @@ def create_app():
 
     app.register_blueprint(info)
     app.register_blueprint(rating_operate)
+    app.register_blueprint(front_index)
     # cache.init_app(app)
 
     class NonASCIIJsonEncoder(json.JSONEncoder):

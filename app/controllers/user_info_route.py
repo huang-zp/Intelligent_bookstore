@@ -10,7 +10,7 @@ info = Blueprint('info', __name__, url_prefix='')
 param_location = ('json', )
 
 
-@info.route('/info', methods=['POST', 'GET'])
+@info.route('/admin/info', methods=['POST', 'GET'])
 @login_required
 def user_info():
     if request.method == 'POST':

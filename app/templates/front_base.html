@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Book Store</title>
+
+            <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+<div id="wrap">
+
+       <div class="header">
+       		<div class="logo"><a href="index.html"><img src="{{ url_for('static', filename='images/logo.gif') }}" alt="" title="" border="0" /></a></div>
+        <div id="menu">
+            <ul>
+                {% block nav %}
+
+                {% endblock %}
+            </ul>
+        </div>
+
+
+       </div>
+
+
+       <div class="center_content">
+                           {% block left %}
+
+                           {% endblock %}
+                                  {% block right %}
+        <div class="right_content">
+
+
+
+
+              <div class="cart">
+                  <div class="title"><span class="title_icon"><img src="{{ url_for('static', filename='images/cart.gif') }}" alt="" title="" /></span>系统总评分</div>
+                  <div class="home_cart_content">
+                  273615  <span class="red">个评分</span>
+                  </div>
+
+
+              </div>
+
+
+             <div class="title"><span class="title_icon"><img src="{{ url_for('static', filename='images/bullet3.gif') }}" alt="" title="" /></span>关于书店</div>
+             <div class="about">
+             <p>
+             <img src="{{ url_for('static', filename='images/about.gif') }}" alt="" title="" class="right" />
+             该书店的任务就是联系用户和信息，一方面帮助用户发现自己感兴趣的书籍，另一方面让书籍能够展现在对它感兴趣的用户面前，从而实现信息消费者和信息生产者的双赢.
+             </p>
+
+             </div>
+
+             <div class="right_box">
+
+             	<div class="title"><span class="title_icon"><img src="{{ url_for('static', filename='images/bullet4.gif') }}" alt="" title="" /></span>博览图书</div>
+                    {% for book in books1 %}
+                 <div class="new_prod_box">
+                        <a href="details.html">{{ book.name }}</a>
+                        <div class="new_prod_bg">
+                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
+                        <a href="details.html"><img src="{{ book.book_image_url_s }}" alt="" title="" class="thumb" border="0" /></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+             </div>
+
+             <div class="right_box">
+
+             	<div class="title"><span class="title_icon"><img src="images/bullet5.gif" alt="" title="" /></span></div>
+
+                                    {% for book in books2 %}
+                 <div class="new_prod_box">
+                        <a href="details.html">{{ book.name }}</a>
+                        <div class="new_prod_bg">
+                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
+                        <a href="details.html"><img src="{{ book.book_image_url_s }}" alt="" title="" class="thumb" border="0" /></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+             </div>
+
+
+        </div><!--end of right content-->
+
+                           {% endblock %}
+
+
+       <div class="clear"></div>
+       </div><!--end of center content-->
+
+
+       <div class="footer">
+
+        <div class="right_footer">
+        <a href="#">home</a>
+        <a href="#">about us</a>
+        <a href="#">services</a>
+        <a href="#">privacy policy</a>
+        <a href="#">contact us</a>
+
+        </div>
+
+
+       </div>
+
+
+</div>
+
+</body>
+</html>

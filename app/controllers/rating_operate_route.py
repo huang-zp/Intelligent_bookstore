@@ -8,7 +8,7 @@ rating_operate = Blueprint('rating_operate', __name__, url_prefix='')
 param_location = ('json', )
 
 
-@rating_operate.route('/rating/list')
+@rating_operate.route('/admin/rating/list')
 @login_required
 def rating_list():
     ratings = db.session.query(BxBookRating).all()
@@ -16,7 +16,7 @@ def rating_list():
     return render_template('rating_list.html', ratings=ratings)
 
 
-@rating_operate.route('/rating/delete/<int:rating_id>')
+@rating_operate.route('/admin/rating/delete/<int:rating_id>')
 def rating_delete(rating_id):
     rating = db.session.query(BxBookRating).filter(BxBookRating.id == rating_id).first()
     db.session.delete(rating)

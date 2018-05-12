@@ -26,7 +26,7 @@
         {% block menu %}
             <div id="cm-menu">
             <nav class="cm-navbar cm-navbar-midnight">
-                <div class="cm-flex"><a href="index.html" class="cm-logo"></a></div>
+                <div class="cm-flex"><h1>智能书屋后台管理</h1></div>
                 <div class="btn btn-midnight md-menu-white" data-toggle="cm-menu"></div>
             </nav>
             <div id="cm-menu-content">
@@ -35,13 +35,13 @@
                         <ul class="cm-menu-items">
                             <li class="active"><a href="{{ url_for('ib.index') }}" class="sf-house">智能书屋</a></li>
                             {% if current_user.is_authenticated %}
-                            <li><a href="{{ url_for('book_operate.book_list') }}" class="sf-dashboard">图书管理</a></li>
-                            <li><a href="{{ url_for('user_operate.user_list') }}" class="sf-brick">用户管理</a></li>
-                            <li><a href="{{ url_for('rating_operate.rating_list') }}" class="sf-window-layout">评分管理</a></li>
+                            <li><a href="{{ url_for('book_operate.book_list') }}" class="sf-book">图书管理</a></li>
+                            <li><a href="{{ url_for('user_operate.user_list') }}" class="sf-profile-group">用户管理</a></li>
+                            <li><a href="{{ url_for('rating_operate.rating_list') }}" class="sf-pencil">评分管理</a></li>
                             {% endif %}
                             {% if current_user.role_id == 1 %}
-                            <li><a href="{{ url_for('log_operate.log_list') }}" class="sf-lock-open">日志管理</a></li>
-                            <li><a href="{{ url_for('info.user_info') }}" class="sf-notepad">个人信息</a></li>
+                            <li><a href="{{ url_for('log_operate.log_list') }}" class="sf-cogs">系统日志</a></li>
+                            <li><a href="{{ url_for('info.user_info') }}" class="sf-profile">个人信息</a></li>
                             {% endif %}
                         </ul>
                     </div>

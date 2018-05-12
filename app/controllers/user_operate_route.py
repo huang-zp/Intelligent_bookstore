@@ -8,7 +8,7 @@ user_operate = Blueprint('user_operate', __name__, url_prefix='')
 param_location = ('json', )
 
 
-@user_operate.route('/user/list')
+@user_operate.route('/admin/user/list')
 @login_required
 def user_list():
     users = db.session.query(User).all()
@@ -16,7 +16,7 @@ def user_list():
     return render_template('user_list.html', users=users)
 
 
-@user_operate.route('/user/delete/<int:user_id>')
+@user_operate.route('/admin/user/delete/<int:user_id>')
 def user_delete(user_id):
     user = db.session.query(User).filter(User.id == user_id).first()
     db.session.delete(user)
@@ -24,7 +24,7 @@ def user_delete(user_id):
     return redirect(url_for('user_operate.user_list'))
 
 
-@user_operate.route('/user/change/<int:user_id>', methods=['POST', 'GET'])
+@user_operate.route('/admin/user/change/<int:user_id>', methods=['POST', 'GET'])
 def user_change(user_id):
     user = db.session.query(User).filter(User.id == user_id).first()
     if request.method == 'POST':
@@ -34,6 +34,8 @@ def user_change(user_id):
         email = request.form['email']
         role = request.form['role']
         age = request.form['age']
+        if age == '':
+            age = None
         location = request.form['location']
         if '管理' in role:
             role = 1
@@ -56,7 +58,7 @@ def user_change(user_id):
     return render_template('user_change.html', user=user)
 
 
-@user_operate.route('/user/add', methods=['POST', 'GET'])
+@user_operate.route('/admin/user/add', methods=['POST', 'GET'])
 def user_add():
     if request.method == 'POST':
 
@@ -65,6 +67,8 @@ def user_add():
         email = request.form['email']
         role = request.form['role']
         age = request.form['age']
+        if age == '':
+            age = None
         location = request.form['location']
         # if '管理' in role:
         #     role = 1
@@ -73,7 +77,7 @@ def user_add():
         password = request.form['password']
         if name == '' or email == '' or role == '' or password == '':
             flash(" 检查某些字段是否为空")
-            return redirect(url_for('user_operate.user_change'))
+            return redirect(url_for('user_operate.user_list'))
 
         user = User()
         user.name = name

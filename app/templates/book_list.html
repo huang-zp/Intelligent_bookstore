@@ -7,7 +7,7 @@
                 <div class="btn btn-midnight md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
                     {% block title %}
-                    <h1>Home</h1>
+                    <h1>图书管理</h1>
                         {% endblock %}
                     <form id="cm-search" action="index.html" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="Search...">
@@ -73,7 +73,7 @@ class="cm-no-transition cm-2-navbar"
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">当前用户所管理的所有桌面</div>
+                            <div class="panel-heading">管理的所有图书</div>
                             <div class="panel-body">
                                 <table class="table table-bordered table-hover">
 
@@ -88,7 +88,7 @@ class="cm-no-transition cm-2-navbar"
                                             <th>图书出版社</th>
                                             <th>图书出版时间</th>
                                             <th>图书封面外链</th>
-                                            <th>操作桌面</th>
+                                            <th>操作图书</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -107,8 +107,8 @@ class="cm-no-transition cm-2-navbar"
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">管理 <span class="caret"></span></button>
                                                     <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="{{ url_for('book_operate.book_change', book_id=book.id) }}">修改桌面</a></li>
-                                                    <li><a href="{{ url_for('book_operate.book_delete', book_id=book.id) }}">删除桌面</a></li>
+                                                    <li><a href="{{ url_for('book_operate.book_change', book_id=book.id) }}">修改图书</a></li>
+                                                    <li><a href="{{ url_for('book_operate.book_delete', book_id=book.id) }}">删除图书</a></li>
                                                     </ul>
                                                 </div>
                                             </td>

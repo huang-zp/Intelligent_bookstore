@@ -7,7 +7,7 @@
                 <div class="btn btn-midnight md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
                     {% block title %}
-                    <h1>Home</h1>
+                    <h1>用户信息</h1>
                         {% endblock %}
                     <form id="cm-search" action="index.html" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="Search...">
@@ -89,14 +89,14 @@
 
               <div class="form-group">
 	    <div class="input-group">
-	      <div class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></div>
+	      <div class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></div>
 	      <input type="text" name="age" class="form-control" placeholder="年龄" value="{{ current_user.age }}">
 	    </div>
           </div>
 
               <div class="form-group">
 	    <div class="input-group">
-	      <div class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></div>
+	      <div class="input-group-addon"><i class="fa fa-fw fa-arrows"></i></div>
 	      <input type="text" name="location" class="form-control" placeholder="地区" value="{{ current_user.location }}">
 	    </div>
           </div>

@@ -2,7 +2,7 @@
 
 
                     {% block title %}
-                    <h1>智能书屋后台管理系统</h1>
+                    <h1>推荐系统</h1>
                         {% endblock %}
 
 {% block global %}
@@ -13,31 +13,27 @@
     </div>
     <div class="container-fluid">
         <div class="row cm-fix-height">
+
             <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <img src="{{ url_for('static', filename='assets/img/ssh.png') }}" alt="Less support" class="img-responsive">
+                        <img src="{{ url_for('static', filename='assets/img/1.png') }}" alt="Responsive across devices" class="img-responsive">
                         <br>
-                        <p>SSH之所以能够保证安全，原因在于它采用了公钥加密。
-                        整个过程是这样的：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。 </p>
+                        <p> 在我们的在线图书推荐系统中，我们借用Spark的ALS算法的训练和预测函数，每次收到新的数据后，将其更新到训练数据集中，然后更新ALS训练得到的模型。
+
+假设我们有一组用户，他们表现出了对一组图书的喜好。用户对一本图书的喜好程度越高，就会给其更高的评分，范围是从1到5。我们来通过一个矩阵来展示它，行代表用户，列代表图书。用户对图书的评分。所有的评分范围从1到5，5代表喜欢程度最高。第一个用户（行1）对第一个图书（列1）的评分是4。空的单元格代表用户未给图书评价。
+
+</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-8">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <img src="{{ url_for('static', filename='assets/img/sshdesktop.jpg') }}" alt="Responsive across devices" class="img-responsive">
+                        <img src="{{ url_for('static', filename='assets/img/2.png') }}" alt="Components" class="img-responsive">
                         <br>
-                        <p> 在后台通过底层库paramiko，paramiko遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接。逻辑代码运行命令拿到数据后通过bootstrap静态样式对数据进行可视化展示</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <img src="{{ url_for('static', filename='assets/img/sshsafe.jpg') }}" alt="Components" class="img-responsive">
-                        <br>
-                        <p>  本系统因为设计到服务器的连接与密码保存，所以为了确保隐私安全，用户表的密码和连接的服务器的密码使用MD5不可逆算法加密后存储，为防止彩虹表破解更会先使用一个特定的字符串（如域名）加密，然后再使用一个随机的salt（盐值）加密。</p>
+                        <p> 矩阵因子分解（如奇异值分解，奇异值分解+ +）将项和用户都转化成了相同的潜在空间，它所代表了用户和项之间的潜相互作用。矩阵分解背后的原理是潜在特征代表了用户如何给项进行评分。给定用户和项的潜在描述，我们可以预测用户将会给还未评价的项多少评分。    <br>
+                            矩阵分解算法的数学理论基础是矩阵的行列变换。在《线性代数》中，我们知道矩阵A进行行变换相当于A左乘一个矩阵，矩阵A进行列变换等价于矩阵A右乘一个矩阵，因此矩阵A可以表示为A=PEQ=PQ（E是标准阵）</p>
                     </div>
                 </div>
             </div>

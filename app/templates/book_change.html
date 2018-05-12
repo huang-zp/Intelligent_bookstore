@@ -7,7 +7,7 @@
                 <div class="btn btn-midnight md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
                     {% block title %}
-                    <h1>Home</h1>
+                    <h1>图书管理</h1>
                         {% endblock %}
                     <form id="cm-search" action="index.html" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="Search...">
@@ -50,9 +50,9 @@
     <div class="cm-flex">
         <div class="nav-tabs-container">
             <ul class="nav nav-tabs">
-                <li><a href="{{ url_for('book_operate.book_list') }}">桌面列表</a></li>
-                <li><a href="{{ url_for('book_operate.book_add') }}">添加桌面</a></li>
-                <li class="active"><a href="{{ url_for('book_operate.book_change', book_id=book.id) }}">修改桌面</a></li>
+                <li><a href="{{ url_for('book_operate.book_list') }}">图书列表</a></li>
+                <li><a href="{{ url_for('book_operate.book_add') }}">添加图书</a></li>
+                <li class="active"><a href="{{ url_for('book_operate.book_change', book_id=book.id) }}">修改图书</a></li>
             </ul>
         </div>
     </div>
@@ -74,7 +74,7 @@ class="cm-no-transition cm-2-navbar"
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">修改桌面（服务器）信息</div>
+                            <div class="panel-heading">修改图书信息</div>
                             <div class="panel-body">
 
     <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
@@ -88,25 +88,25 @@ class="cm-no-transition cm-2-navbar"
 	<div class="col-xs-12">
                   <div class="form-group">
 	    <div class="input-group">
-	      <div class="input-group-addon"><i class="fa fa-fw fa-child"></i></div>
+	      <div class="input-group-addon"><i class="fa fa-fw fa-flag"></i></div>
 	      <input type="text" name="book_isbn" class="form-control" placeholder="图书ISBN" value="{{ book.book_isbn }}">
 	    </div>
           </div>
           <div class="form-group">
 	    <div class="input-group">
-	      <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
+	      <div class="input-group-addon"><i class="fa fa-fw fa-book"></i></div>
 	      <input type="text" name="book_title" class="form-control" placeholder="图书标题" value="{{ book.book_title }}">
 	    </div>
           </div>
           <div class="form-group">
 	    <div class="input-group">
-	      <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
+	      <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
 	      <input type="text" name="book_author" class="form-control" placeholder="图书作者" value="{{ book.book_author }}">
 	    </div>
           </div>
                   <div class="form-group">
 	    <div class="input-group">
-	      <div class="input-group-addon"><i class="fa fa-fw fa-cloud"></i></div>
+	      <div class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></div>
 	      <input type="text" name="book_year_of_publication" class="form-control" placeholder="图书出版时间" value="{{ book.book_year_of_publication }}">
 	    </div>
           </div>
@@ -120,7 +120,7 @@ class="cm-no-transition cm-2-navbar"
 
                                   <div class="form-group">
 	    <div class="input-group">
-	      <div class="input-group-addon"><i class="fa fa-fw  fa-book"></i></div>
+	      <div class="input-group-addon"><i class="fa fa-fw  fa-picture-o"></i></div>
 	      <input type="text" name="book_image_url_l" class="form-control" placeholder="图书封面链接" value="{{ book.book_image_url_l }}">
 	    </div>
           </div>

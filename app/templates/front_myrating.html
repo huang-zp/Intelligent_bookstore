@@ -1,0 +1,40 @@
+{% extends "front_base.html" %}
+
+                           {% block nav %}
+            <li><a href="{{ url_for('front_index.index') }}">书屋</a></li>
+            <li><a href="{{ url_for('front_index.recomm') }}">推荐</a></li>
+            <li><a href="{{ url_for('front_index.top') }}">排行版</a></li>
+            <li class="selected"><a href="{{ url_for('front_index.myrating') }}">我的评分</a></li>
+                        {% if current_user.is_authenticated %}
+
+            <li><a href="{{ url_for('front_index.info') }}">个人中心</a></li>
+                               {% else %}
+            <li><a href="{{ url_for('front_index.register') }}">注册</a></li>
+            <li><a href="{{ url_for('front_index.login') }}">登录</a></li>
+                               {% endif %}
+                {% endblock %}
+
+                           {% block left %}
+       	<div class="left_content">
+            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>Rating</div>
+
+        	<div class="feat_prod_box_details">
+            <p class="details">
+            <img src="images/about.gif" alt="" title="" class="right" />
+                                {% for rating in ratings %}
+            <p>
+
+                <li>书籍ISBN：{{ rating.book_isbn }}, 评分：{{ rating.book_rating }}</li>
+            </p>
+
+{% endfor %}
+            </div>
+
+
+
+
+
+
+        <div class="clear"></div>
+        </div><!--end of left content-->
+                           {% endblock %}
